@@ -91,11 +91,13 @@ src/
 ```
 
 ## Технологии
+```bash
 Spring Boot 3.5.6
 Apache Kafka
 Spring Validation
 JUnit 5
 Maven
+```
 
 ## API Документация
 ```bash
