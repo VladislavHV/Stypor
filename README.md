@@ -70,6 +70,7 @@ curl -X POST http://localhost:8080/api/v1/drones/message \
 mvn test
 
 ## Структура проекта
+'''bash
 src/
 ├── main/
 │   ├── java/com/example/demo/
