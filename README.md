@@ -23,12 +23,14 @@ git clone <repository-url>
 cd drone-kafka-service
 
 ## Запуск Kafka через Docker
+```bash
 docker run -d --name kafka -p 9092:9092 \
   -e KAFKA_CFG_NODE_ID=0 \
   -e KAFKA_CFG_PROCESS_ROLES=controller,broker \
   -e KAFKA_CFG_LISTENERS=PLAINTEXT://:9092 \
   -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 \
   apache/kafka:3.7.0
+```
 
 ## Сборка и запуск приложения
 mvn clean package
@@ -38,6 +40,7 @@ Maven
 mvn spring-boot:run
 
 ## Тестирование API
+```bash
 curl -X POST http://localhost:8080/api/v1/drones/message \
   -H "Content-Type: application/json" \
   -d '{
@@ -48,13 +51,17 @@ curl -X POST http://localhost:8080/api/v1/drones/message \
     "altitude": 120.0,
     "detectedBy": "Radar Station Alpha"
   }'
+```
 ## Ответ
+```bash
 {
   "status": "success",
   "message": "Drone message sent to Kafka successfully"
 }
+```
 
 ## Тестирование ошибок
+```bash
 curl -X POST http://localhost:8080/api/v1/drones/message \
   -H "Content-Type: application/json" \
   -d '{
@@ -65,6 +72,7 @@ curl -X POST http://localhost:8080/api/v1/drones/message \
     "altitude": -10,
     "detectedBy": ""
   }'
+```
 
 ## Запуск всех тестов
 mvn test
@@ -90,6 +98,7 @@ JUnit 5
 Maven
 
 ## API Документация
+```bash
 {
   "model": "string (обязательно, макс. 100 символов)",
   "speed": "number (обязательно, > 0)",
